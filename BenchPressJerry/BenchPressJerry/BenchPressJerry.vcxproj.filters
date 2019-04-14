@@ -5,22 +5,52 @@
       <UniqueIdentifier>3a8f016f-392b-484f-9280-a2ec7fd05eb4</UniqueIdentifier>
       <Extensions>ico;cur;bmp;dds;dlg;fbx;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tga;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Code">
+      <UniqueIdentifier>{8e0adf75-68cc-423e-b2c4-9b2515e5b578}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Code\Headers">
+      <UniqueIdentifier>{89dc88f6-f88e-49fe-a6cd-338e526d2374}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Code\Source">
+      <UniqueIdentifier>{25bc4c72-fc1d-4d67-8af0-cd0a6ba6b319}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="pch.h" />
-    <ClInclude Include="Game.h" />
-    <ClInclude Include="StepTimer.h" />
+    <ClInclude Include="pch.h">
+      <Filter>Code\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Game.h">
+      <Filter>Code\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="StepTimer.h">
+      <Filter>Code\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="BasicSprite.h">
+      <Filter>Code\Headers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="pch.cpp" />
-    <ClCompile Include="Game.cpp" />
-    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="pch.cpp">
+      <Filter>Code\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Game.cpp">
+      <Filter>Code\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Main.cpp">
+      <Filter>Code\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="BasicSprite.cpp">
+      <Filter>Code\Source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="resource.rc" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="directx.ico">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\Art\Background.png">
       <Filter>Assets</Filter>
     </Image>
   </ItemGroup>

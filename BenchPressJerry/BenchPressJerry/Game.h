@@ -5,6 +5,10 @@
 #pragma once
 
 #include "StepTimer.h"
+#include "BasicSprite.h"
+
+#define DEFAULT_WINDOW_WIDTH 1280
+#define DEFAULT_WINDOW_HEIGHT 720
 
 
 // A basic game implementation that creates a D3D11 device and
@@ -59,4 +63,10 @@ private:
 
     // Rendering loop timer.
     DX::StepTimer                                   m_timer;
+
+
+	// DirectX ToolKit variables.
+	std::unique_ptr<DirectX::SpriteBatch> m_spriteBatch;
+
+	BasicSprite m_backgroundSprite;
 };

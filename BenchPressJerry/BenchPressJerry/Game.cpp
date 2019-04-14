@@ -13,8 +13,8 @@ using Microsoft::WRL::ComPtr;
 
 Game::Game() noexcept :
     m_window(nullptr),
-    m_outputWidth(800),
-    m_outputHeight(600),
+    m_outputWidth(DEFAULT_WINDOW_WIDTH),
+    m_outputHeight(DEFAULT_WINDOW_HEIGHT),
     m_featureLevel(D3D_FEATURE_LEVEL_9_1)
 {
 }
@@ -70,6 +70,12 @@ void Game::Render()
     Clear();
 
     // TODO: Add your rendering code here.
+
+	m_spriteBatch->Begin();
+
+	m_backgroundSprite.Render(m_spriteBatch);
+
+	m_spriteBatch->End();
 
     Present();
 }
@@ -143,9 +149,8 @@ void Game::OnWindowSizeChanged(int width, int height)
 // Properties
 void Game::GetDefaultSize(int& width, int& height) const
 {
-    // TODO: Change to desired default window size (note minimum size is 320x200).
-    width = 800;
-    height = 600;
+    width = DEFAULT_WINDOW_WIDTH;
+    height = DEFAULT_WINDOW_HEIGHT;
 }
 
 // These are the resources that depend on the device.
@@ -213,6 +218,10 @@ void Game::CreateDevice()
     DX::ThrowIfFailed(context.As(&m_d3dContext));
 
     // TODO: Initialize device dependent objects here (independent of window size).
+
+	m_spriteBatch = std::make_unique<SpriteBatch>(m_d3dContext.Get());
+
+	m_backgroundSprite.Initialize(m_d3dDevice, L"Assets/Art/Background.png");
 }
 
 // Allocate all memory resources that change on a window SizeChanged event.
@@ -309,6 +318,8 @@ void Game::CreateResources()
     DX::ThrowIfFailed(m_d3dDevice->CreateDepthStencilView(depthStencil.Get(), &depthStencilViewDesc, m_depthStencilView.ReleaseAndGetAddressOf()));
 
     // TODO: Initialize windows-size dependent objects here.
+
+	m_backgroundSprite.SetPositionAndSize(0, 0, (uint16_t)backBufferWidth, (uint16_t)backBufferHeight);
 }
 
 void Game::OnDeviceLost()
@@ -320,6 +331,8 @@ void Game::OnDeviceLost()
     m_swapChain.Reset();
     m_d3dContext.Reset();
     m_d3dDevice.Reset();
+
+	m_backgroundSprite.CleanUp();
 
     CreateDevice();
 
