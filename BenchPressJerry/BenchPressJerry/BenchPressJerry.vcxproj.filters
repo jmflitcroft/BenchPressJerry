@@ -28,6 +28,9 @@
     <ClInclude Include="BasicSprite.h">
       <Filter>Code\Headers</Filter>
     </ClInclude>
+    <ClInclude Include="AnimatedSprite.h">
+      <Filter>Code\Headers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -40,6 +43,9 @@
       <Filter>Code\Source</Filter>
     </ClCompile>
     <ClCompile Include="BasicSprite.cpp">
+      <Filter>Code\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="AnimatedSprite.cpp">
       <Filter>Code\Source</Filter>
     </ClCompile>
   </ItemGroup>

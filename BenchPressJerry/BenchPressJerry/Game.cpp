@@ -54,8 +54,8 @@ void Game::Update(DX::StepTimer const& timer)
 {
     float elapsedTime = float(timer.GetElapsedSeconds());
 
-    // TODO: Add your game logic here.
-    elapsedTime;
+    
+	m_playerSprite.Update(elapsedTime);
 }
 
 // Draws the scene.
@@ -71,9 +71,10 @@ void Game::Render()
 
     // TODO: Add your rendering code here.
 
-	m_spriteBatch->Begin();
+	m_spriteBatch->Begin(SpriteSortMode_Deferred, m_commonStates->NonPremultiplied());
 
 	m_backgroundSprite.Render(m_spriteBatch);
+	m_playerSprite.Render(m_spriteBatch);
 
 	m_spriteBatch->End();
 
@@ -220,8 +221,10 @@ void Game::CreateDevice()
     // TODO: Initialize device dependent objects here (independent of window size).
 
 	m_spriteBatch = std::make_unique<SpriteBatch>(m_d3dContext.Get());
+	m_commonStates = std::make_unique<CommonStates>(m_d3dDevice.Get());
 
 	m_backgroundSprite.Initialize(m_d3dDevice, L"Assets/Art/Background.png");
+	m_playerSprite.Initialize(m_d3dDevice, L"Assets/Art/CharacterSpriteSheet.png", 0, 0, 640, 720, 2, 1, 1.0f);
 }
 
 // Allocate all memory resources that change on a window SizeChanged event.
@@ -332,7 +335,11 @@ void Game::OnDeviceLost()
     m_d3dContext.Reset();
     m_d3dDevice.Reset();
 
+	m_spriteBatch.reset();
+	m_commonStates.reset();
+
 	m_backgroundSprite.CleanUp();
+	m_playerSprite.CleanUp();
 
     CreateDevice();
 

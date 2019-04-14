@@ -6,6 +6,7 @@
 
 #include "StepTimer.h"
 #include "BasicSprite.h"
+#include "AnimatedSprite.h"
 
 #define DEFAULT_WINDOW_WIDTH 1280
 #define DEFAULT_WINDOW_HEIGHT 720
@@ -67,6 +68,8 @@ private:
 
 	// DirectX ToolKit variables.
 	std::unique_ptr<DirectX::SpriteBatch> m_spriteBatch;
+	std::unique_ptr<DirectX::CommonStates> m_commonStates;
 
 	BasicSprite m_backgroundSprite;
+	AnimatedSprite m_playerSprite;
 };
