@@ -1,6 +1,13 @@
 #include "pch.h"
 #include "BasicSprite.h"
 
+BasicSprite::BasicSprite()
+{
+}
+BasicSprite::~BasicSprite()
+{
+}
+
 void BasicSprite::Initialize(const Microsoft::WRL::ComPtr<ID3D11Device1> d3dDevice, const wchar_t* fileName, uint16_t x /* = 0*/, uint16_t y /*= 0*/, uint16_t width /*= 0*/, uint16_t height /*= 0*/)
 {
 	DX::ThrowIfFailed(DirectX::CreateWICTextureFromFile(d3dDevice.Get(), fileName, nullptr, m_resource.GetAddressOf()));
